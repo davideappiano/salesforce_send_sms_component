@@ -1,0 +1,35 @@
+<template>
+    <lightning-card title="Import CSV" icon-name="standard:account">
+        <lightning-spinner if:true={loading}></lightning-spinner>
+        <div class="slds-p-around_medium">
+            <lightning-input type="file" label="CSV file" accept=".csv" onchange={handleInputChange}></lightning-input>
+        </div>
+
+        <template if:true={rows.length}>
+            <div class="slds-p-around_medium">
+                <lightning-datatable key-field="REFERENCE" data={rows} columns={columns}></lightning-datatable>
+            </div>
+        </template>
+    </lightning-card>
+
+    <footer class="slds-card__footer actionButtonBar slds-grid slds-grid_align-spread slds-p-horizontal_small"
+        data-aura-rendered-by="121:0">
+        <div class="actionsLeft slds-grid slds-m-right_xx-small" data-aura-rendered-by="122:0">
+            <button type="button" class="slds-button slds-button_neutral flow-button__CANCEL" onclick={handleCancel}
+                data-aura-rendered-by="112:0">
+                <!--render facet: 113:0-->Cancel
+                <!--render facet: 116:0-->
+            </button>
+        </div>
+        <!--render facet: 124:0-->
+        <template if:true={rows.length}>
+            <div class="actionsRight slds-grid" data-aura-rendered-by="125:0">
+                <button type="button" class="slds-button slds-button_brand flow-button__NEXT" onclick={handleNext}
+                    data-aura-rendered-by="101:0">
+                    <!--render facet: 102:0-->Next
+                    <!--render facet: 105:0-->
+                </button>
+            </div>
+        </template>
+    </footer>
+</template>

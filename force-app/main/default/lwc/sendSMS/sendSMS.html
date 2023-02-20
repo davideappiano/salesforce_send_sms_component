@@ -1,0 +1,19 @@
+<template>
+    <lightning-card icon-name="standard:sms">
+        <h3 slot="title">Send SMS</h3>
+    <div class="slds-p-around_small">
+            <template if:true={showloader}>
+                    <lightning-spinner alternative-text="Loading"></lightning-spinner>
+                </template>    
+    <template if:true={messageTemplateOptions.data}>
+        <lightning-combobox name="Role" label="Message Template" placeholder="Select a Message Template"
+            onchange={handleChange} options={messageTemplateOptions.data}>
+        </lightning-combobox>
+       
+        <lightning-textarea name="description" label="Template" value={templateMessage} max-length="400" disabled></lightning-textarea>
+        <lightning-textarea name="message" label="Message" value={messageDescription} max-length="400"
+            onchange={handleMessageChange}></lightning-textarea>
+    </template>
+    </div>
+    </lightning-card>
+</template>
